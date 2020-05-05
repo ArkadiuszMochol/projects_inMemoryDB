@@ -5,5 +5,6 @@ public class Main {
         ProjectController pc = new ProjectController();
 
         pc.getAllProjects();
+        pc.getProjectAcronimAndBudget();
     }
 }
