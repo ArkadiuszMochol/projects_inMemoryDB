@@ -1,9 +1,7 @@
 package basicLambda;
 
 import java.text.NumberFormat;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class ProjectController {
@@ -49,6 +47,27 @@ public class ProjectController {
                 return InMemoryDB.projects.stream()
                 .mapToDouble(Project::getProjectFounds)
                 .sum();
+    }
+    //7. Metoda zwracająca średnie dofinansowanie projektów zawierajacych kategorię podaną w argumencie
+    public double avgProjectFoundsContainsCategory(Category category){
+        OptionalDouble avgOptional = InMemoryDB.projects.stream()
+                .filter(project -> project.getCategories().contains(category))
+                .mapToDouble(Project::getProjectFounds)
+                .average();
+        return avgOptional.isPresent() ?avgOptional.getAsDouble() : 0;
+    }
+
+    //8. Metoda wypisująca nazwę projektu, ilość kategorii oraz nazwy kategorii wypisane po przecinkach
+    public String getAllProjectsFormatted(){
+        return InMemoryDB.projects.stream()                                     //zamiana listy projektow na stream
+                .map(project -> String.format("%30s | %2d | %s ",                //mapowanie obiektów z listy do napisów
+                        project.getName(),
+                        project.getCategories().stream()                        //zamiana listy kategorii na stream
+                                .count(),                                       //zliczanie kategorii wartość long
+                        project.getCategories().stream()                        //zamiana listy kategorii na stream
+                                .map(Enum::name)                                //mapowanie nazwy kategorii
+                                .collect(Collectors.joining(","))      //zamiana listy na String z separatorem ","
+                )).collect(Collectors.joining("\n"));                  //zamiana stream na String
     }
 
 
