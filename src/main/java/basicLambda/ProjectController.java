@@ -70,5 +70,25 @@ public class ProjectController {
                 )).collect(Collectors.joining("\n"));                  //zamiana stream na String
     }
 
+    //9. Metoda zwracająca projekt z największą liczbą pracownikó
+    public Project getProjectWithMaxEmployees(){
+        return InMemoryDB.projects.stream()
+                .sorted(Comparator.comparing(Project::getNoEmployees).reversed())
+                .findFirst()
+                .get();
+    }
+
+    //10. Metoda sprawdza, czy istnieje projekt o podanej nazwie
+    public boolean existProject (String name){
+        return InMemoryDB.projects.stream()
+                .anyMatch(project -> project.getName().toUpperCase().equals(name.toUpperCase()));
+    }
+
+
+
+
+
+
+
 
 }

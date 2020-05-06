@@ -9,7 +9,7 @@ public interface InMemoryDB {
     void dbConnection();
     static List<Project> projects = new ArrayList<>(
     Arrays.asList(
-    new Project("SmartCity", 1_500_000, 25, 75,
+    new Project("SmartCity", 1_500_000, 55, 75,
             new ArrayList<>(Arrays.asList(Category.IT, Category.EDUCATION, Category.ELECTRONICS, Category.TLECOMUNICATION))),
     new Project("JAVA", 1_000_000, 35, 80,
             new ArrayList<>(Arrays.asList(Category.EDUCATION, Category.IT, Category.HR))),

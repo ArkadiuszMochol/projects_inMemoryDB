@@ -12,24 +12,28 @@ public class Main {
     public static void main(String[] args) {
         ProjectController pc = new ProjectController();
 
-        //pc.getAllProjects();
-        //pc.getProjectNameAndBudget();
-        //pc.getAllProjectOrderByBudgetDesc().forEach(System.out::println);
-        //pc.getAllProjectContainsCategoryOrderByBudgetDesc(Category.IT).forEach(System.out::println);
-        //pc.getAllProjectWithCategoriesOrderByBudgetDesc(Arrays.asList(Category.IT, Category.HR))
-        //       .forEach(System.out::println);
-
+//        pc.getAllProjects();
+//        pc.getProjectNameAndBudget();
+//        pc.getAllProjectOrderByBudgetDesc().forEach(System.out::println);
+//        pc.getAllProjectContainsCategoryOrderByBudgetDesc(Category.IT).forEach(System.out::println);
+//        pc.getAllProjectWithCategoriesOrderByBudgetDesc(Arrays.asList(Category.IT, Category.HR))
+//               .forEach(System.out::println);
+//
 //        Locale locale = new Locale("pl", "PL");
 //        NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(locale);
 //        System.out.println("Całkowite dofinansowanie projektów wynosi: "+ currencyFormatter.format(pc.sumOfFoundsProjects()));
-
+//
 //        Category category = Category.IT;
 //        System.out.printf("Średnie dofinansowanie %s: %20.2f PLN",
 //                category,
 //                pc.avgProjectFoundsContainsCategory(category)
 //                );
+//
+//        System.out.println(pc.getAllProjectsFormatted());
+//
+//        System.out.println(pc.getProjectWithMaxEmployees());
 
-        System.out.println(pc.getAllProjectsFormatted());
+        System.out.println("Czy istnieje projekt SmartCity? "+ pc.existProject("SMARTCITY"));
 
     }
 }
