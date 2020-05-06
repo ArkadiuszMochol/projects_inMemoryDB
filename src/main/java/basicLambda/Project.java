@@ -14,7 +14,7 @@ public class Project {
     private double percentOfFounds;
     private List<Category> categories;
 
-    public double getProjectFouns(){
+    public double getProjectFounds(){
         return (budget*percentOfFounds)/100;
     }
 

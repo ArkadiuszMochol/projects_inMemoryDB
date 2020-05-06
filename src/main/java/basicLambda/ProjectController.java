@@ -1,6 +1,5 @@
 package basicLambda;
 
-import java.sql.SQLOutput;
 import java.text.NumberFormat;
 import java.util.Comparator;
 import java.util.List;
@@ -45,5 +44,12 @@ public class ProjectController {
                 .sorted(Comparator.comparingDouble(Project::getBudget).reversed())
                 .collect(Collectors.toList());
     }
+    //6.Metoda zwaracająca sumę dofinansowania projektów
+    public double sumOfFoundsProjects(){
+                return InMemoryDB.projects.stream()
+                .mapToDouble(Project::getProjectFounds)
+                .sum();
+    }
+
 
 }
