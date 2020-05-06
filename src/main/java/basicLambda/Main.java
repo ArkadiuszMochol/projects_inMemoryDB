@@ -9,7 +9,8 @@ public class Main {
         ProjectController pc = new ProjectController();
 
         //pc.getAllProjects();
-       // pc.getProjectNameAndBudget();
-        pc.getAllProjectOrderByBudgetDesc().forEach(System.out::println);
+        //pc.getProjectNameAndBudget();
+        //pc.getAllProjectOrderByBudgetDesc().forEach(System.out::println);
+        pc.getAllProjectContainsCategoryOrderByBudgetDesc(Category.IT).forEach(System.out::println);
     }
 }

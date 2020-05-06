@@ -28,6 +28,13 @@ public class ProjectController {
                 .sorted(Comparator.comparingDouble(Project::getBudget).reversed())
                 .collect(Collectors.toList());
     }
+//4. Metoda zwraca listę projektów zawierających kategorię w argumencie
+    public List<Project> getAllProjectContainsCategoryOrderByBudgetDesc(Category category){
+        return InMemoryDB.projects.stream()
+                .filter(project -> project.getCategories().contains(category))
+                .sorted(Comparator.comparingDouble(Project::getBudget).reversed())
+                .collect(Collectors.toList());
+    }
 
 
 }
