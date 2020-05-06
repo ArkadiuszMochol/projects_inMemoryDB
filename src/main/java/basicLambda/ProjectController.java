@@ -22,19 +22,28 @@ public class ProjectController {
                 .forEach(project -> System.out.printf("Nazwa: %-30s || Budget: %20s \n",
                         project.getName(), currencyFormatter.format(project.getBudget())));
     }
-//3. Metoda zwracająca listę projektów posortowanych po budżecie max->min
-    public List<Project> getAllProjectOrderByBudgetDesc(){
+
+    //3. Metoda zwracająca listę projektów posortowanych po budżecie max->min
+    public List<Project> getAllProjectOrderByBudgetDesc() {
         return InMemoryDB.projects.stream()
                 .sorted(Comparator.comparingDouble(Project::getBudget).reversed())
                 .collect(Collectors.toList());
     }
-//4. Metoda zwraca listę projektów zawierających kategorię w argumencie
-    public List<Project> getAllProjectContainsCategoryOrderByBudgetDesc(Category category){
+
+    //4. Metoda zwraca listę projektów zawierających kategorię w argumencie
+    public List<Project> getAllProjectContainsCategoryOrderByBudgetDesc(Category category) {
         return InMemoryDB.projects.stream()
                 .filter(project -> project.getCategories().contains(category))
                 .sorted(Comparator.comparingDouble(Project::getBudget).reversed())
                 .collect(Collectors.toList());
     }
 
+    //5. Metoda zwracająca listę projektów zawierających kategorię określone w argumencie
+    public List<Project> getAllProjectWithCategoriesOrderByBudgetDesc(List<Category> categories) {
+        return InMemoryDB.projects.stream()
+                .filter(project -> project.getCategories().containsAll(categories))
+                .sorted(Comparator.comparingDouble(Project::getBudget).reversed())
+                .collect(Collectors.toList());
+    }
 
 }
